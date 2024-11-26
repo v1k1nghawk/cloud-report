@@ -89,8 +89,7 @@ then
    SET CLUSTER SETTING sql.stats.automatic_collection.enabled = false;
   ";
   echo "Loading TPCC fixture for $f_warehouses warehouses ..."
-  # ./cockroach workload fixtures make tpcc --warehouses="$f_warehouses" $f_load_args "${pgurls[0]}"
-  ./cockroach workload fixtures load tpcc --checks=false --warehouses="$f_warehouses" $f_load_args "${pgurls[0]}"
+  ./cockroach workload init tpcc --warehouses="$f_warehouses" $f_load_args "${pgurls[0]}"
   echo "done loading"
 fi
 
